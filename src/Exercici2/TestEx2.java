@@ -12,6 +12,12 @@ public class TestEx2 extends RecursiveTask<Double> {
     private final int inicio, finale;
     private final double[] array;
 
+    /**
+     * Constructor
+     * @param array
+     * @param inicio
+     * @param finale 
+     */
     public TestEx2(double[] array, int inicio, int finale) {
         this.inicio = inicio;
         this.finale = finale;
@@ -19,6 +25,16 @@ public class TestEx2 extends RecursiveTask<Double> {
     }
 
 
+    /**
+     * Se crea el array de las temperaturas registradas. Se obtienen los procesadores disponibles 
+     * para crear los hilos e invocar el método "compute()" donde se divide la tarea en tareas más simples
+     * para realizar la suma de los 4 primeros valores con un bucle del array y diviendo el resultado de esa suma
+     * entre 4 para saber la temperatura media de esa hora (Ya que las temperaturas se registran cada 15 minutos). 
+     * De esta se realiza la temperatura media de cada hora y posteriormentese realiza la temperatura media de todos 
+     * los resultados anteriores.
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
 
         double[] temperaturas = {
@@ -48,6 +64,11 @@ public class TestEx2 extends RecursiveTask<Double> {
         System.out.println("Temperatura media más alta: " + resultado + " ºC");
     }
 
+    /**
+     * Se dividen las tareas en otras más sencillas para hacer la media de las temperaturas almacenadas en el array
+     * de temperaturas. 
+     * @return 
+     */
     @Override
     protected Double compute() {
 
